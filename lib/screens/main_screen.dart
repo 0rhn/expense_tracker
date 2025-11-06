@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'analytics_screen.dart';
+import 'budget_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
         index: _selectedTab,
         children: const [
           HomeScreen(),
+          BudgetScreen(),
           AnalyticsScreen(),
         ],
       ),
@@ -35,6 +37,11 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.account_balance_wallet_outlined),
+            selectedIcon: Icon(Icons.account_balance_wallet),
+            label: 'Budget',
           ),
           NavigationDestination(
             icon: Icon(Icons.analytics_outlined),
