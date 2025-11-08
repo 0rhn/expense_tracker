@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'theme/app_theme.dart';
 import 'screens/main_screen.dart';
 
-void main() {
+void main() async {
+  // Ensure Flutter is initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize database factory for web
+  if (kIsWeb) {
+    databaseFactory = databaseFactoryFfiWeb;
+  }
+  
   runApp(
     const ProviderScope(
       child: ExpenseTrackerApp(),
